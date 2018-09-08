@@ -1,7 +1,11 @@
 Todo:
 + Map
    > Get user location automatically & show a pin
+   + Get Lat & Long of location
+   		> Get latlng for the mouse location
+   		+ Get latlng for a pin that the user places (default is user location)
    + Searchable (Nice to have)
+   + Change map from streets to area/layout (Nice to have)
 + Call Canadian map API to get the name of the region
 + Query our own database (Need to get this data) with that API and get the text for it
    + Get data and store it somewhere (Maybe its own API)
