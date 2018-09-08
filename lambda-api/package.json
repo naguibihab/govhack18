@@ -6,6 +6,7 @@
   "scripts": {
     "create": "claudia create --region us-west-2 --api-module main --version dev --profile govhack",
     "deploy": "claudia update --version dev --profile govhack",
+    "update": "npm run deploy",
     "test": "claudia test-lambda --event event.json --profile govhack",
     "logs": "aws logs filter-log-events --log-group-name /aws/lambda/thisplace --profile govhack",
     "smart-deploy": "npm run deploy && npm run test && npm run logs",
@@ -15,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "claudia-api-builder": "^4.1.1"
+    "claudia-api-builder": "^4.1.1",
+    "request": "^2.88.0"
   }
 }
