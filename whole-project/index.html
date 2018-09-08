@@ -57,8 +57,26 @@
 	        // e.lngLat is the longitude, latitude geographical position of the event
 	        // JSON.stringify(e.lngLat);
 
-	        console.log(e.lngLat);
+	        // console.log(e.lngLat);
+	        getNativeName(e.lngLat)
 		});
+
+	function getNativeName(location){
+		// Create a request variable and assign a new XMLHttpRequest object to it.
+		var request = new XMLHttpRequest();
+
+		// Open a new connection, using the GET request on the URL endpoint
+		request.open('GET', 'https://native-land.ca/api/index.php?maps=languages&position='+location.lat+','+location.lng, true);
+
+		request.onload = function () {
+		  // Begin accessing JSON data here
+		  var data = JSON.parse(this.response);
+		  console.log("DATA",data);
+	 	}
+
+		// Send request
+		request.send();
+	}
 </script>
 
 </body>
