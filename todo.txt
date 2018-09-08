@@ -1,0 +1,10 @@
+Todo:
++ Map
+   > Get user location automatically & show a pin
+   + Searchable (Nice to have)
++ Call Canadian map API to get the name of the region
++ Query our own database (Need to get this data) with that API and get the text for it
+   + Get data and store it somewhere (Maybe its own API)
+   + Query the data english version
+   + Give the user the ability to switch languages (John already worked on this so keep it last)
++ Call Wikipedia to get more data about it (Nice to have, ask Jeremy how can I do this?)
