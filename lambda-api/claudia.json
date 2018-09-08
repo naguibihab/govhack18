@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "thisplace-executor",
+    "name": "thisplace",
+    "region": "us-west-2"
+  },
+  "api": {
+    "id": "m3x7aefsn9",
+    "module": "main"
+  }
+}
