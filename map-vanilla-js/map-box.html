@@ -49,6 +49,8 @@
 		    trackUserLocation: true
 		}));
 
+		var called = false;
+
 		map.on('mousemove', function (e) {
 	    	document.getElementById('info').innerHTML =
 	        // e.point is the x, y coordinates of the mousemove event relative
@@ -57,8 +59,10 @@
 	        // e.lngLat is the longitude, latitude geographical position of the event
 	        JSON.stringify(e.lngLat);
 
-	        console.log(e.lngLat);
-	        // getNativeName(e.lngLat)
+	        // console.log(e.lngLat);
+	        if (!called) 
+	        	getNativeName(e.lngLat)
+	        called = true
 		});
 
 	function getNativeName(location){
@@ -66,14 +70,16 @@
 		var request = new XMLHttpRequest();
 
 		//https://m3x7aefsn9.execute-api.us-west-2.amazonaws.com/dev/native-land/-33.868820/151.209290
+
+		var baseUrl = "https://m3x7aefsn9.execute-api.us-west-2.amazonaws.com/dev/native-land"
 		
 		// Open a new connection, using the GET request on the URL endpoint
-		request.open('GET', 'https://native-land.ca/api/index.php?maps=languages&position='+location.lat+','+location.lng, true);
+		request.open('GET', baseUrl+'/'+location.lat+'/'+location.lng, true);
 
 		request.onload = function () {
 		  // Begin accessing JSON data here
 		  var data = JSON.parse(this.response);
-		  console.log("DATA",data);
+		  console.log("response",data);
 	 	}
 
 		// Send request
