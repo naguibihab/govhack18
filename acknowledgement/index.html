@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>This Place</title>
+
+  <meta name='viewport' content='initial-scale=1' />
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css'/>
+
+  <link href="https://fonts.googleapis.com/css?family=Six+Caps|Open+Sans" rel="stylesheet">
+
+  <style type='text/css'>
+    :root {
+      --dark: #1B2024;
+      --light: #FEFEFE;
+
+      --primary: rgb(198, 98, 39);
+      --secondary: rgb(90, 126, 134);
+
+      --ground: rgb(236, 207, 190);
+      --storm: rgb(8, 62, 90);
+
+      --mask: rgba(0, 0, 0, .3);
+      --screen: rgba(90, 126, 134, .5);
+
+      --drop-primary: rgba(198, 98, 39, .75);
+      --drop-secondary: rgba(90, 126, 134, .75);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      bottom: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    #info {
+      background-color: var(--storm);
+      color: var(--light);
+
+      font-size: 1rem;
+      height: 100vh;
+      left: 0;
+      padding: 10px;
+      position: absolute;
+
+      top: 0;
+      width: 40%;
+    }
+
+    #info strong {
+      display: block;
+      font-family: "Six Caps", sans-serif;
+      font-size: 4rem;
+      margin-top: calc(50% - 3.5rem);
+      text-align: right;
+    }
+
+    #info b {
+      font-size: 3rem;
+    }
+
+    #info h1 {
+      font-family: "Open Sans", sans-serif;
+      font-size: 2.5rem;
+      line-height: 1.0123456;
+    }
+
+    #info p {
+      font-size: 2rem;
+      letter-spacing: .25rem;
+      line-height: 1.0123456;
+    }
+
+    #info div {
+      background-color: var(--light);
+      bottom: 0;
+      height: 4rem;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+
+    #info select {
+      background-color: var(--light);
+      background-clip: padding-box;
+      border: none;
+      border-radius: 0;
+      color: #495057;
+      display: block;
+      font-size: 1.2rem;
+      height: 2.5rem;
+      line-height: 1.5;
+      padding: .375rem .75rem;
+      width: 100%;
+    }
+
+    .mapboxgl-ctrl-top-left,
+    /* .mapboxgl-ctrl-top-right, */
+    .mapboxgl-ctrl-bottom-left,
+    .mapboxgl-ctrl-bottom-right {
+      visibility: hidden;
+    }
+
+  </style>
+
+  </head>
+  <body>
+    <div id='map'></div>
+    <div id='info'>
+      <strong>click on a point in the map <b>→</b></strong>
+    </div>
+
+    <script>
+      const baseUrl = "https://m3x7aefsn9.execute-api.us-west-2.amazonaws.com/dev";
+
+      mapboxgl.accessToken = 'pk.eyJ1IjoibmFndWliaWhhYiIsImEiOiJjamxzeXVob2UwMzBxM3dwOTcwdWZ2ejlmIn0.CPnrk-ZohwbV5lr4L_fg6w';
+
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10',
+        // center: [150.5755366,-33.8579273],
+        center: [151.20,-33.88], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+      });
+
+      const geocoder = new MapboxGeocoder({accessToken: mapboxgl.accessToken});
+
+      map.addControl(geocoder, 'top-right');
+
+      map.addControl(new mapboxgl.NavigationControl());
+      // Add geolocate control to the map.
+      map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
+      }));
+
+      map.on('click', function (e) {
+        // document.getElementById('info').innerHTML =
+        // e.point is the x, y coordinates of the mousemove event relative
+        // to the top-left corner of the map
+        // JSON.stringify(e.point) + '<br />' +
+        // e.lngLat is the longitude, latitude geographical position of the event
+        // JSON.stringify(e.lngLat);
+
+        // console.log(e.lngLat);
+        getNativeName(e.lngLat);
+      });
+
+    function getNativeName(location){
+      // Create a request variable and assign a new XMLHttpRequest object to it.
+      var request = new XMLHttpRequest();
+
+      //https://m3x7aefsn9.execute-api.us-west-2.amazonaws.com/dev/native-land/-33.868820/151.209290
+      // Open a new connection, using the GET request on the URL endpoint
+      request.open('GET', baseUrl+'/native-land/'+location.lat+'/'+location.lng, true);
+
+      request.onload = function () {
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response);
+        console.log("response",data);
+
+        updateText(data.name,data.name,'english',data.heritage.data,data.heritage.contributer);
+      }
+
+      // Send request
+      request.send();
+    }
+
+    function changeLang(nation,people) {
+      var language = document.getElementById("language").value;
+
+      var request = new XMLHttpRequest();
+
+      //https://m3x7aefsn9.execute-api.us-west-2.amazonaws.com/dev/native-land/-33.868820/151.209290
+
+      // Open a new connection, using the GET request on the URL endpoint
+      request.open('GET', baseUrl+'/heritage/'+nation+'/'+people+'/'+language, true);
+
+      request.onload = function () {
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response);
+        // console.log("response",data);
+        updateText(data.name,data.name,language,data.heritage.data,data.heritage.contributer);
+      }
+
+      // Send request
+      request.send();
+    }
+
+    function updateText(nation,people,language,heritageData,contributer){
+      var showString = "<h1>You're in the country of <em>" + nation + "</em></h1>";
+      showString += "<p>" + heritageData + "</p>";
+      showString += "<h3>Contribution made by <i>"+contributer+"</i></h3>";
+
+      showString += `
+        <div>
+          <select id="language" onchange="changeLang('` + nation + `','` + people + `')">
+            <option value="">Select your language</option>
+            <option value="english">English</option>
+            <option value="chinese-simplified">Chinese (simplified)</option>
+            <option value="chinese-traditional">Chinese (traditional)</option>
+            <option value="indonesian">Indonesian</option>
+            <option value="hindi-male">Hindi (male speaker)</option>
+            <option value="hindi-female">Hindi (female speaker)</option>
+            <option value="french">French</option>
+            <option value="vietnamese">Vietnamese</option>
+            <option value="arabic">Arabic</option>
+          </select>
+        </div>
+      `;
+
+      showString += ``;
+
+      document.getElementById('info').innerHTML = showString;
+    }
+    </script>
+
+  </body>
+</html>
