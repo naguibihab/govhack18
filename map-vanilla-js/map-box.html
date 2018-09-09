@@ -49,8 +49,6 @@
 		    trackUserLocation: true
 		}));
 
-		var called = false;
-
 		map.on('click', function (e) {
 	    	document.getElementById('info').innerHTML =
 	        // e.point is the x, y coordinates of the mousemove event relative
@@ -60,9 +58,7 @@
 	        JSON.stringify(e.lngLat);
 
 	        // console.log(e.lngLat);
-	        if (!called) 
-	        	getNativeName(e.lngLat)
-	        called = true
+        	getNativeName(e.lngLat);
 		});
 
 	function getNativeName(location){
