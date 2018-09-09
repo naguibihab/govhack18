@@ -37,8 +37,14 @@ api.get('/native-land/{lat}/{lng}', function(req) {
 api.get('/heritage/{nation}/{people}/{language}', function(req) {
 	var nation = req.pathParams.nation;
 	var language = req.pathParams.language;
+	var people = req.pathParams.people;
 
-	return getHeritage(nation, people, language);
+	var heritage = getHeritage(nation, people, language);
+
+	return {
+    	name: nation,
+    	heritage: heritage 
+    };
 });
 
 function getHeritage(nation, people, language) {
