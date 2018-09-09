@@ -19,7 +19,7 @@ api.get('/native-land/{lat}/{lng}', function(req) {
 
 		    	var nation = jsonBody[0].properties.Name;
 		    	const defaultLanguage = 'english';
-		    	const people = 'Sutherland folk';
+		    	const people = nation;
 
 		    	var heritage = getHeritage(nation, people, defaultLanguage)
 
@@ -99,7 +99,7 @@ function getHeritage(nation, people, language) {
 		}
 	} else {
 		heritage.data = heritage.data.replace(new RegExp('{{people}}', 'g'),people);
-		heritage.data = heritage.data.replace(new RegExp('{{nation}}', 'g'),nation);
+		heritage.data = heritage.data.replace(new RegExp('{{nation}}', 'g'),'country of '+nation);
 	}
 
 	return heritage;
