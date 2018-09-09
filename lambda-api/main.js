@@ -9,7 +9,7 @@ api.get('/native-land/{lat}/{lng}', function(req) {
 	    var lat = req.pathParams.lat;
 	    var lng = req.pathParams.lng;
 
-	    var url ='https://native-land.ca/api/index.php?maps=languages&position='+lat+','+lng;
+	    var url ='https://native-land.ca/api/index.php?maps=territories&position='+lat+','+lng;
 
 		request(url, function (error, response, body) {
 			console.log("Reply: ",response,error);
