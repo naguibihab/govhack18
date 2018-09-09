@@ -59,8 +59,8 @@ function getHeritage(landname, language, people, nation) {
 	// replace parameters
 	var heritage = data[landname][language];
 
-	heritage.data = heritage.data.replace('{{people}}',people);
-	heritage.data = heritage.data.replace('{{nation}}',nation);
+	heritage.data = heritage.data.replace(new RegExp('{{people}}', 'g'),people);
+	heritage.data = heritage.data.replace(new RegExp('{{nation}}', 'g'),nation);
 
 	return heritage;
 }
