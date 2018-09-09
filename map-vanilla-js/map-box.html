@@ -30,7 +30,7 @@
     }
 </style>
 <div id='map'></div>
-<pre id='info'></pre>
+<pre id='info'>Click on a point in the map</pre>
 <script>
 	baseUrl = "https://m3x7aefsn9.execute-api.us-west-2.amazonaws.com/dev"
 	mapboxgl.accessToken = 'pk.eyJ1IjoibmFndWliaWhhYiIsImEiOiJjamxzeXVob2UwMzBxM3dwOTcwdWZ2ejlmIn0.CPnrk-ZohwbV5lr4L_fg6w';
@@ -114,6 +114,13 @@
 		showString += `
 		  <select id="language" onchange="changeLang('`+nation+`','`+people+`')">
 		  	<option value="english">English</option>
+		  	<option value="chinese-simplified">Chinese (simplified)</option>
+		  	<option value="chinese-traditional">Chinese (traditional)</option>
+		  	<option value="indonesian">Indonesian</option>
+		  	<option value="hindi-male">Hindi (male speaker)</option>
+		  	<option value="hindi-female">Hindi (female speaker)</option>
+		  	<option value="french">French</option>
+		  	<option value="vietnamese">Vietnamese</option>
 		  	<option value="arabic">Arabic</option>
 		  </select>
 		  `;
