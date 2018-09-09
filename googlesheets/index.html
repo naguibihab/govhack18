@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Storing User data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style/palette.css" />
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/sheet.css" />
+  </head>
+  <body>
+    <main>
+      <header></header>
+      <section>
+        <header><h1>This Place</h1></header>
+
+        <p>We appreciate your feedback on the quality of the data we've been able to provide.</p>
+        <p>We will anonymise your data when dealing with 3rd parties, and will only use what you provide should a partner ask us to request further clarification from you.</p>
+
+        <form id="feedback" action="null">
+          <label class="required">
+            <select id="feedback-topic" required>
+              <option>Frequent topics</option>
+              <option value="country">Aboriginal country</option>
+              <option value="languages">Aboriginal languages</option>
+              <option value="maps">Map regions</option>
+              <option value="other">Another topic</option>
+            </select>
+          </label>
+          <fieldset>
+            <legend>Please provide your name</legend>
+            <label class="required">
+              <span>Your message</span>
+              <textarea id="feedback-message" required></textarea>
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Please provide your name</legend>
+            <label>
+              <span>Your name</span>
+              <input type=text id="feedback-name"></textarea>
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Please provide your email address</legend>
+            <label>
+              <span>Your email</span>
+              <input type=email id="feedback-email"></textarea>
+            </label>
+          </fieldset>
+          <input type=hidden id="feedback-date">
+
+          <button id="feedback-submit">submit</button>
+        </form>
+      </section>
+
+    </main>
+
+    <aside id="modal">
+      <div>
+        <header><h1>THANKS</h1></header>
+        <div class="scrollable">
+          <h2>We've got your feedback!</h2>
+          <p>We really appreciate you taking the time to improve everyone's understanding This Place and data we provide.</p>
+        </div>
+        <footer><button>close</button></header>
+      </div>
+    </aside>
+
+    <footer id="footer"><p><abbr title="Copyright">©</abbr> <time datetime="2018-09-08">'18</time></p></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+  </body>
+</html>

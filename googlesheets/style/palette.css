@@ -1,0 +1,10 @@
+:root {
+  --dark: #1B2024;
+  --light: #FEFEFE;
+
+  --mask: rgba(0, 0, 0, .75);
+
+  --primary: #FFA900;
+
+  --warn: #E03A00;
+}

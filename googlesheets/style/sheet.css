@@ -1,0 +1,99 @@
+
+
+body {
+  padding-bottom: 2rem;
+}
+
+main {
+  margin: 0 auto;
+  width: 20rem;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+legend {
+  visibility: hidden;
+  position: absolute;
+  left: -999rem;
+}
+
+.required::after {
+  color: var(--warn);
+  content: "*";
+}
+
+#modal {
+  display: none;
+  position: absolute;
+}
+
+#modal > div {
+  background-color: var(--light);
+  min-height: 10rem;
+  margin: 2rem auto;
+  position: relative;
+  width: 66vw;
+}
+
+body.modal {
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+}
+
+body.modal #modal {
+  background-color: var(--mask);
+  display: block;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 99;
+}
+
+#modal header {
+  background-color: var(--primary);
+  color: var(--dark);
+  height: 3rem;
+  line-height: 2;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+#modal h1 {
+  font-size: 1.5rem;
+}
+
+#modal h2 {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+#modal div div {
+  padding: 0 1rem;
+}
+
+#modal footer {
+  background-color: var(--dark);
+  bottom: 0;
+  color: var(--light);
+  height: 2rem;
+  line-height: 2;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+#footer {
+  background-color: var(--dark);
+  bottom: 0;
+  color: var(--light);
+  height: 2rem;
+  line-height: 2;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
+}
