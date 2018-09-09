@@ -1,0 +1,248 @@
+body {
+  background-color: var(--ground);
+  color: var(--light);
+  font-family: sans-serif;
+}
+
+main > section {
+  min-height: 100vh;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+#header {
+  background: var(--primary) url(../graphics/hero_1920x1080.jpg) 50% 50%;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#header h1 {
+  visibility: hidden;
+}
+
+#counts {
+  color: var(--secondary);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  zoom: 2;
+}
+
+#counts > div {
+  line-height: 1.4;
+  margin: 5vw;
+  padding-bottom: 2rem;
+  position: relative;
+  width: 40vw;
+}
+
+#counts h2 {
+  color: var(--light);
+  font-family: 'Six Caps', sans-serif;
+  font-size: 5rem;
+  text-transform: uppercase;
+}
+
+#counts h3 {
+  color: var(--light);
+  font-family: 'Six Caps', sans-serif;
+  font-size: 10rem;
+  text-shadow: .25rem .25rem .125rem var(--drop-secondary);
+}
+
+#counts h4 {
+  background-color: var(--secondary);
+  color: var(--ground);
+  padding: .75rem;
+}
+
+#counts h5 {
+  font-size: .75rem;
+  font-weight: bold;
+}
+
+#counts a {
+  color: var(--secondary);
+}
+
+#counts .active h3 {
+  text-shadow: .25rem .25rem .125rem var(--drop-primary);
+}
+
+#counts .active h4 {
+  background-color: var(--primary);
+}
+
+#counts .active span,
+#counts .active a {
+  color: var(--primary);
+}
+
+#maps {
+  background-color: var(--secondary);
+}
+
+#maps menu ul {
+  display: flex;
+}
+
+
+#maps menu li {
+  display: inline-block;
+  flex: 1;
+  position: relative;
+}
+
+#maps menu li::before {
+  background-color: var(--secondary);
+  top: -1rem;
+  content: "";
+  height: 2rem;
+  left: calc(50% - 1rem);
+  position: absolute;
+  transform: rotate(-45deg);
+  width: 2rem;
+  z-index: -1;
+}
+
+#maps menu li:hover::before,
+#maps menu li.active::before {
+  background-color: var(--primary);
+}
+
+#maps menu li:hover::after,
+#maps menu li.active::after {
+  background-color: var(--primary);
+  bottom: -1rem;
+  content: "";
+  height: 2rem;
+  left: calc(50% - 1rem);
+  position: absolute;
+  transform: rotate(-45deg);
+  width: 2rem;
+  z-index: 9;
+}
+
+#maps menu li.active button {
+  z-index: 99;
+}
+
+#maps menu button {
+  background: none;
+  border: none;
+  border-left: .1rem solid  var(--secondary);
+  border-right: .1rem solid  var(--secondary);
+  color: var(--ground);
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  outline: none !important;
+  padding: .75rem 0 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  z-index: 99;
+}
+
+#maps menu li:hover button,
+#maps menu li.active button {
+  background-color:  var(--primary);
+  color: var(--ground);
+}
+
+#maps div {
+  background: var(--primary) url(../graphics/map_nations.png) 50% 50%;
+  background-size: cover;
+  height: calc(100vh - 42px);
+  position: relative;
+  width: 100vw;
+}
+
+#maps div.countries {
+  background-image: url(../graphics/map_nations.png)
+}
+
+#maps div.languages {
+  background-image: url(../graphics/map_acknowledgement.png);
+}
+
+#maps div.sites {
+  background-image: url(../graphics/map_history.png);
+}
+
+#maps div.stories {
+  background-image: url(../graphics/map_seed.png);
+}
+
+#maps div::after {
+  background-color: var(--screen);
+  top: 0;
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100vw;
+}
+
+#acknowledgement {
+  background-color: var(--light);
+  background-image: url(../graphics/acknowledgement_madlib.png);
+  background-size: cover;
+}
+
+#acknowledgement a {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100vw;
+}
+
+#keystone {
+  background-color: var(--dark);
+  color: var(--light);
+  display: flex;
+  min-height: 50vh;
+  justify-content: space-between;
+}
+
+#keystone menu {
+  padding: 2rem;
+  width: 33%;
+}
+
+#keystone li {
+  margin: .5rem 0;
+}
+
+#keystone a {
+  color: var(--light);
+  display: inline-block;
+  font-size: 1.5rem;
+  padding: .5rem .25rem;
+  text-decoration: none;
+  width: 100%;
+}
+
+#keystone a:hover,
+#keystone a.active {
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+#keystone:hover a.active {
+  background-color: var(--secondary);
+  color: var(--light);
+}
+
+#footer {
+  background-color: var(--dark);
+  color: var(--light);
+  height: 2rem;
+  line-height: 2;
+  text-align: center;
+  width: 100vw;
+}

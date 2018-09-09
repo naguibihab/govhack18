@@ -1,0 +1,7 @@
+@media (min-width: 800px) {
+  #counts > div {
+    flex-wrap: nowrap;
+    margin: 0;
+    width: 20vw;
+  }
+}
