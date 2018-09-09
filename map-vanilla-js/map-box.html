@@ -26,6 +26,7 @@
         text-align: center;
         color: #222;
         background: #fff;
+        word-wrap: break-word;
     }
 </style>
 <div id='map'></div>
@@ -50,12 +51,12 @@
 		}));
 
 		map.on('click', function (e) {
-	    	document.getElementById('info').innerHTML =
+	    	// document.getElementById('info').innerHTML =
 	        // e.point is the x, y coordinates of the mousemove event relative
 	        // to the top-left corner of the map
 	        // JSON.stringify(e.point) + '<br />' +
 	        // e.lngLat is the longitude, latitude geographical position of the event
-	        JSON.stringify(e.lngLat);
+	        // JSON.stringify(e.lngLat);
 
 	        // console.log(e.lngLat);
         	getNativeName(e.lngLat);
@@ -76,6 +77,12 @@
 		  // Begin accessing JSON data here
 		  var data = JSON.parse(this.response);
 		  console.log("response",data);
+
+		  var showString = "You're at " + data.name + "<br>";
+		  showString += data.heritage.data + "<br>";
+		  showString += "contribution made by "+data.heritage.contributer;
+
+		  document.getElementById('info').innerHTML = showString;
 	 	}
 
 		// Send request
