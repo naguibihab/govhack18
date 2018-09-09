@@ -1,0 +1,25 @@
+
+
+body {
+  padding-bottom: 2rem;
+}
+
+main {
+  margin: 0 auto;
+  width: 20rem;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+#footer {
+  background-color: var(--dark);
+  bottom: 0;
+  color: var(--light);
+  height: 2rem;
+  line-height: 2;
+  position: fixed;
+  text-align: center;
+  width: 100vw;
+}
