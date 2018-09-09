@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fetching Google Places data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style/palette.css" />
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/sheet.css" />
+  </head>
+  <body>
+    <main>
+      <header></header>
+      <section>
+        <header><h1>This Place</h1></header>
+
+        <p>Use the controls below to draw data from Google Places</p>
+
+        <form id="search" action="null">
+          <select id="search-suggestions">
+            <option>Suggested searches</option>
+            <option value="aboriginal+sacred+places">Aboriginal sacred places</option>
+            <!-- <option value="aboriginal+art">Aboriginal art</option> -->
+            <option value="aboriginal+heritage">Aboriginal Heritage</option>
+          </select>
+
+          <input id="google" placeholder="Add your search string" />
+          <button id="fetch-data">fetch</button>
+        </form>
+        <ul id="display-result"></ul>
+      </section>
+      <section>
+        <header></header>
+        <div>
+          <div class="scrollable"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer"><p><abbr title="Copyright">©</abbr> <time datetime="2018-09-08">'18</time></p></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+  </body>
+</html>
