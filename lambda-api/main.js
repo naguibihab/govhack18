@@ -17,15 +17,14 @@ api.get('/native-land/{lat}/{lng}', function(req) {
 		    	jsonBody = JSON.parse(body);
 		    	console.log(jsonBody[0]);
 
-		    	var landName = jsonBody[0].properties.Name;
+		    	var nation = jsonBody[0].properties.Name;
 		    	const defaultLanguage = 'english';
 		    	const people = 'Sutherland folk';
-		    	const nation = 'The Shire';
 
-		    	var heritage = getHeritage(landName, defaultLanguage, people, nation)
+		    	var heritage = getHeritage(nation, people, defaultLanguage)
 
 		        resolve({
-		        	name: landName,
+		        	name: nation,
 		        	heritage: heritage 
 		        });
 		    } else {
@@ -35,14 +34,14 @@ api.get('/native-land/{lat}/{lng}', function(req) {
 	});
 });
 
-api.get('/heritage/{landname}/{language}/{people}/{nation}', function(req) {
-	var landname = req.pathParams.landname;
+api.get('/heritage/{nation}/{people}/{language}', function(req) {
+	var nation = req.pathParams.nation;
 	var language = req.pathParams.language;
 
-	return getHeritage(landname, language);
+	return getHeritage(nation, people, language);
 });
 
-function getHeritage(landname, language, people, nation) {
+function getHeritage(nation, people, language) {
 	const data = {
 		'Eora': {
 			'english': {
@@ -57,7 +56,7 @@ function getHeritage(landname, language, people, nation) {
 	}
 
 	// replace parameters
-	var heritage = data[landname][language];
+	var heritage = data[nation][language];
 
 	heritage.data = heritage.data.replace(new RegExp('{{people}}', 'g'),people);
 	heritage.data = heritage.data.replace(new RegExp('{{nation}}', 'g'),nation);
