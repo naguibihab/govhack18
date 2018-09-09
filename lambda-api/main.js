@@ -46,11 +46,11 @@ function getHeritage(nation, people, language) {
 		'Eora': {
 			'english': {
 				'data': 'I would like to acknowledge the {{people}} people of the {{nation}} Nation who are the traditional custodians of the land we meet on today. I would also like to pay respect to the Elders, both past and present, of the {{nation}} Nation.',
-				'contribute': 'SBS'
+				'contributer': 'SBS'
 			},
 			'arabic': {
 				'data': 'wa7 wa7',
-				'contribute': 'Mesh Danny'
+				'contributer': 'Mesh Danny'
 			}
 		}
 	}
